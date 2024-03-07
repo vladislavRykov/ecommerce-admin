@@ -16,16 +16,16 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  // const session = await getServerSession();
+  const session = await getServerSession();
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* <SessionProvider session={session}> */}
-        <div className="bg-blue-800 max-w-full min-h-screen flex">
-          <NavBar />
-          <div className="bg-white rounded-md p-2 mt-2 mr-2 w-full">{children}</div>
-        </div>
-        {/* </SessionProvider> */}
+        <SessionProvider session={session}>
+          <div className="bg-blue-800 max-w-full min-h-screen flex">
+            <NavBar />
+            <div className="bg-white rounded-md p-2 mt-2 mr-2 w-full">{children}</div>
+          </div>
+        </SessionProvider>
       </body>
     </html>
   );
