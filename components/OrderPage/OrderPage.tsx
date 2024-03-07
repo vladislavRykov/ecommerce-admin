@@ -24,7 +24,9 @@ const OrderPage = () => {
             <div>Продукт</div>
           </div>
           {orders.map((order) => (
-            <div className="grid grid-cols-order py-4 px-2 items-center border-b-2 border-solid border-gray-100">
+            <div
+              key={order._id}
+              className="grid grid-cols-order py-4 px-2 items-center border-b-2 border-solid border-gray-100">
               <div>
                 {order.paid ? (
                   <span className="text-green-500">Оплачено</span>
@@ -40,8 +42,8 @@ const OrderPage = () => {
                 </div>
               </div>
               <div>
-                {order.line_items.map((item) => (
-                  <div className="mb-1 shadow-md p-2">
+                {order.line_items.map((item, idx) => (
+                  <div key={idx + item.price_data.product_data.name} className="mb-1 shadow-md p-2">
                     {item.price_data.product_data.name} x{item.quantity}
                   </div>
                 ))}

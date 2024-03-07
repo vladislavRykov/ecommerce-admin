@@ -36,10 +36,7 @@ export async function GET(req: NextRequest) {
   const id = searchParams.get('id');
   if (id) {
     try {
-      const product: MongooseProductPopulated | null = await Models.Product.findById(id).populate([
-        'images',
-        'category',
-      ]);
+      const product = await Models.Product.findById(id).populate(['images', 'category']);
       if (!product)
         return NextResponse.json('Такого продукта не существует в базе', { status: 400 });
       return NextResponse.json(product, { status: 200 });

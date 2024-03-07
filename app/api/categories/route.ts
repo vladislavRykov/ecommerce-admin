@@ -21,9 +21,7 @@ export async function GET(req: NextRequest) {
   const id = searchParams.get('id');
   if (id) {
     try {
-      const category: MongooseCategoryPopulated | null = await Models.Category.findById(
-        id,
-      ).populate(['parent']);
+      const category = await Models.Category.findById(id).populate(['parent']);
       if (!category)
         return NextResponse.json('Такой категории не существует в базе', { status: 400 });
       return NextResponse.json(category, { status: 200 });

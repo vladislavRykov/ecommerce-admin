@@ -13,7 +13,7 @@ import { storage } from '@/firebase/firebase';
 
 export async function POST(req: NextRequest) {
   const formData = await req.formData();
-  const files = formData.getAll('images') as Blob[] | null;
+  const files = formData.getAll('images') as (Blob & { name: string })[] | null;
   if (!files) {
     return NextResponse.json({ error: 'File blob is required.' }, { status: 400 });
   }
@@ -36,8 +36,9 @@ export async function POST(req: NextRequest) {
           async () => {
             const url = await getDownloadURL(imageRef);
             console.log('File uploaded successfully: ' + url);
+            const fileName = file.name;
             const mdbFile: MongooseFile = await Models.File.create({
-              fileName: file.name,
+              fileName: fileName,
               source: url,
               size: file.size,
               mimetype: file.type,
@@ -90,8 +91,8 @@ export async function POST(req: NextRequest) {
   //   return NextResponse.json({ error: 'Something went wrong.' }, { status: 500 });
   // }
 }
-export const config = {
-  api: {
-    bodyParser: false, // enable form data
-  },
-};
+// export const config = {
+//   api: {
+//     bodyParser: false, // enable form data
+//   },
+// };

@@ -1,5 +1,4 @@
 'use client';
-import { PageProps } from '@/.next/types/app/categories/edit/[id]/page';
 import API from '@/services/api/api';
 import { Form, Formik, FormikHelpers } from 'formik';
 import React, { useEffect, useState } from 'react';
@@ -24,7 +23,11 @@ interface Values {
   name: string;
   parent: string;
 }
-const EditCat: React.FC<PageProps> = (props) => {
+interface ParamsProps {
+  params: any;
+  searchParams: any;
+}
+const EditCat: React.FC<ParamsProps> = (props) => {
   const router = useRouter();
   const [properties, setProperties] = useState<{ name: string; value: string[] }[]>([]);
   const [initialValues, setInitialValues] = useState<Values>({

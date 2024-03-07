@@ -27,7 +27,7 @@ interface Values {
   price: string;
 }
 
-const New = (props) => {
+const New = () => {
   const router = useRouter();
   const [categorySelected, setCategorySelected] = useState<string>('');
   const [categories, setCategories] = useState<MongooseCategoryPopulated[] | []>([]);
@@ -154,7 +154,7 @@ const New = (props) => {
                 rows={2}
                 placeholder="Описание"
                 className={fieldStyle}
-                onChange={(e) => {
+                onChange={(e: React.ChangeEvent<any>) => {
                   formik.handleChange(e);
                   e.target.style.height = '';
                   e.target.style.height = e.target.scrollHeight + 4 + 'px';

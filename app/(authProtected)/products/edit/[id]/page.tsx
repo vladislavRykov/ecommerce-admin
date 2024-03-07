@@ -1,8 +1,7 @@
 'use client';
-import { PageProps } from '@/.next/types/app/products/edit/[id]/page';
 import { useFetching } from '@/hooks/useFetching';
 import API from '@/services/api/api';
-import { Form, Formik, FormikHelpers, FormikProps } from 'formik';
+import { Form, Formik, FormikHelpers, FormikProps, Field } from 'formik';
 import { useParams, useRouter } from 'next/navigation';
 import React, { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import * as Yup from 'yup';
@@ -43,8 +42,11 @@ interface Values {
   desc: string;
   price: number | '';
 }
-
-const EditById: React.FC<PageProps> = (props) => {
+interface ParamsProps {
+  params: any;
+  searchParams: any;
+}
+const EditById: React.FC<ParamsProps> = (props) => {
   const router = useRouter();
   const [images, setImages] = useState<FileList | []>([]);
   const [productProperties, setProductProperties] = useState<{
@@ -222,7 +224,7 @@ const EditById: React.FC<PageProps> = (props) => {
               rows={2}
               disabled={isLoading}
               placeholder={isLoading ? '' : 'Описание'}
-              onChange={(e) => {
+              onChange={(e: React.ChangeEvent<any>) => {
                 formik.handleChange(e);
                 e.target.style.height = '';
                 e.target.style.height = e.target.scrollHeight + 4 + 'px';
