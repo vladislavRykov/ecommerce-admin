@@ -1,0 +1,14 @@
+.wrapper {
+  width: 50px;
+  display: none;
+  color: white;
+  padding: 10px;
+}
+.navBtn {
+  position: fixed;
+}
+@media (max-width: 768px) {
+  .wrapper {
+    display: block;
+  }
+}

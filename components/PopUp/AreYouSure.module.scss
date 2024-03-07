@@ -1,0 +1,49 @@
+.blackout {
+  opacity: 0;
+  transition: all 0.2s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.512);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &_shown {
+    opacity: 1;
+  }
+}
+.confirmWindow {
+  position: relative;
+  top: -50%;
+  transition: all 0.4s;
+  border-radius: 5px;
+  background-color: white;
+  max-width: 30vw;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 2px 6px 3px rgba(75, 75, 75, 0.479);
+  &_shown {
+    top: 0%;
+  }
+  &_title {
+    @apply text-3xl p-5 border-solid border-gray-200 border-b-2;
+  }
+  &_message {
+    @apply text-lg py-5;
+  }
+  &_error {
+    @apply text-base py-2 text-red-600;
+  }
+  &_btns {
+    @apply py-3 flex justify-center items-center;
+  }
+  &_yes {
+    @apply relative w-12 h-9 mr-3 transition-all bg-white rounded text-blue-600 px-3 py-2 border-solid border-2 border-blue-600 hover:bg-blue-100 active:outline-none active:ring active:ring-blue-100;
+  }
+  &_no {
+    @apply h-9 transition-all bg-red-700 rounded text-white px-3 py-2 border-solid border-2 border-transparent hover:bg-red-800 active:outline-none active:ring active:ring-red-300;
+  }
+}

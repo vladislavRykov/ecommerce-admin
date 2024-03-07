@@ -1,0 +1,44 @@
+.blackout {
+  color: black;
+  transition: all 0.2s;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.437);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+
+  &_shown {
+    opacity: 1;
+  }
+  .btns {
+    top: 50%;
+    transform: translateY(-50%);
+    position: fixed;
+    font-size: 40px;
+    color: white;
+  }
+  .forward {
+    right: 10%;
+  }
+  .back {
+    left: 10%;
+  }
+}
+.imageBlock {
+  transition: all 0.4s;
+  max-width: 500px;
+  width: 100%;
+
+  position: fixed;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+  &_shown {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
