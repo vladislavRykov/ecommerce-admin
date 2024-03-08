@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const { data: session } = useSession();
   const searchParams = useSearchParams();
   const message = searchParams.get('message');
   const router = useRouter();
