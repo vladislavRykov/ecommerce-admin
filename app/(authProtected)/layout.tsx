@@ -6,5 +6,9 @@ export default function CategoriesLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <CheckAuth>{children}</CheckAuth>;
+  return <>{children}</>;
+  // <CheckAuth>
+  {
+    /* </CheckAuth>; */
+  }
 }
