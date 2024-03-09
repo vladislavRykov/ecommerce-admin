@@ -17,7 +17,7 @@ export default function Home() {
       ) : (
         <button
           onClick={async () => {
-            router.push('/');
+            // router.push('/');
             await signIn('google', {});
           }}
           className="bg-black duration-100 text-white p-3 px-2 rounded-lg hover:bg-opacity-80 active:scale-105">
